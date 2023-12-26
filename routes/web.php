@@ -26,9 +26,7 @@ use App\Http\Controllers\frontend\checkout\CheckOutController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
 
 // Route::get('/',[UserController::class,'index'])->name('dashboard');
 
@@ -36,7 +34,7 @@ Route::get('/admin/login',[AuthenticationController::class,'index'])->name('logi
 Route::post('/admin/signin',[AuthenticationController::class,'submit'])->name('submitlogin');
 
 Route::group(['prefix'=> 'admin','as'=>'admin:'],function(){
-    // Route::group(['middleware'=>'auth:web'],function(){
+    Route::group(['middleware'=>'auth:web'],function(){
         Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
         Route::get('/logout',[DashboardController::class,'logout'])->name('logout');
         /////User Route
@@ -69,7 +67,7 @@ Route::group(['prefix'=> 'admin','as'=>'admin:'],function(){
         Route::post('/order/status/{id}',[OrderController::class,'status'])->name('order.status');
         Route::get('/order-history',[OrderController::class,'history'])->name('order.history');
 
-    // });
+    });
 });
 
 
@@ -82,7 +80,7 @@ Route::post('/user/signup',[UserLoginController::class,'submit'])->name('custome
 Route::post('/signin',[UserLoginController::class,'customersignin'])->name('customer.login');
 Route::prefix('customer')->group(function () {
 Route::group(['middleware'=>'auth:customer'],function(){
-    Route::get('/logout',[CustomerDashboardController::class,'logout'])->name('logout');
+    Route::get('/logout',[CustomerDashboardController::class,'logout'])->name('logouts');
     Route::post('/addtocart',[CartController::class,'addtocart']);
     Route::get('/cart',[CartController::class,'cart']);
     Route::get('/delete-cart-item/{id}',[CartController::class,'deleteproduct']);

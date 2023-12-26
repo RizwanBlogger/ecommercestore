@@ -15,8 +15,11 @@ class DashboardController extends Controller
     }
     public function logout()
     {
-        Session::flush();
-        Auth::logout();
-        return redirect()->route('login');
+
+        if (Auth::guard('web')->check()) {
+
+            Auth::guard('web')->logout();
+            return redirect('/admin/login')->with('message', 'User logout');
+        }
     }
 }

@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min2167.css?v=3.2.0') }}" />
 
 
-   
+
 
 </head>
 
@@ -73,7 +73,7 @@
         </div>
     </div>
 
-   
+
 
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
